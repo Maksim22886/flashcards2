@@ -1,6 +1,7 @@
 const readlineSync = require('readline-sync');
 const { EOL } = require('os');
 const run = require("./runner");
+const chalk = require('chalk');
 
 class View {
   constructor(model, name) {
@@ -15,20 +16,20 @@ class View {
     for (let i = 0; i < this.model.readAsk().length; i++) {
       const ask = this.model.readAsk()[i];
       let answer = this.model.readAnswers()[i + 1];
-      let userName = readlineSync.question(`${EOL}${ask}${EOL}Ответ: `);
+      let userName = readlineSync.question(chalk.red(`${EOL}${ask}${EOL}Ответ: `));
       if (typeof userName === "string") {
         userName = userName.toLowerCase();
         answer = answer.toLowerCase();
       }
       if (userName === answer) {
-        console.log(`Умничка!!!😊${EOL}${Monkeytru.repeat(20)}`);
+        console.log(chalk.blue(`Умничка!!!😊${EOL}${Monkeytru.repeat(20)}`));
         count += 1;
       } else {
-        console.log(
+        console.log(chalk.yellow(
           `Правильный ответ: ${
             this.model.readAnswers()[i + 1]
           }${EOL}${Monkeyfalse.repeat(20)}`
-        );
+        ));
       }
       if (i === this.model.readAsk().length - 1) {
         if (count >= 4) {
@@ -44,7 +45,7 @@ class View {
         }
       }
     }
-    const ocen = readlineSync.question("Попрошу оценить мой квиз от 1-10   ");
+    const ocen = readlineSync.question(chalk.blue("Попрошу оценить мой квиз от 1-10   "));
     const ocen1 = Number(ocen);
     if (ocen1 < 2) {
       console.log("Будем стараться");
