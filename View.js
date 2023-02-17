@@ -33,12 +33,12 @@ class View {
       if (i === this.model.readAsk().length - 1) {
         if (count >= 4) {
           console.log(
-            `${EOL}${this.name} ты набрал ${count} правильных ответов!`
+            `${EOL}${this.name} ты набрал/а ${count} правильных ответов!`
           );
           console.log("Молодец");
         } else {
           console.log(
-            `${EOL}${this.name} - ты набрал ${count} правильных ответов!`
+            `${EOL}${this.name} - ты набрал/а ${count} правильных ответов!`
           );
           console.log("В следующий раз будет лучше!");
         }
