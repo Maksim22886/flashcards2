@@ -1,9 +1,13 @@
-const Controller = require("./Controller");
-const Model = require("./Model");
-const View = require("./View");
+const readlineSync = require('readline-sync');
+const { EOL } = require('os');
+const Model = require('./model');
+const View = require('./View');
 
-const model = new Model
-const view = new View
-const controller = new Controller(model, view)
+const userN = readlineSync.question("Друг, как тебя зовут? ");
+console.log(`Привет 😊${userN}😊`);
 
-controller.run()
+const userName = readlineSync.question(`Выбери тему: Логика Фразы Наука${EOL}`);
+
+const newModel = new Model(userName);
+const newView = new View(newModel, userN);
+newView.run();
